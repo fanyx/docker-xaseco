@@ -12,4 +12,4 @@ WORKDIR /var/app
 
 ENTRYPOINT ./entrypoint.sh
 
-CMD ls -l
+CMD ["php", "aseco.php"] 
