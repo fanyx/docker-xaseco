@@ -70,6 +70,31 @@ ln -s templates/dedimania.xml dedimania.xml
 
 # localdatabase.xml
 
+if [ -z "$MYSQL_HOST" ]; then
+    echo "WARN | MySQL host address was not given."
+    echo "WARN | Assuming localhost..."
+    export MYSQL_HOST="127.0.0.1"
+fi
 
+if [ -z "$MYSQL_LOGIN" ]; then
+    echo "ERROR | MySQL login was not given."
+    echo "ERROR | Exiting..."
+    exit 1
+fi
+
+if [ -z "$MYSQL_PASSWORD" ]; then
+    echo "ERROR | MySQL password was not given."
+    echo "ERROR | Exiting..."
+    exit 1
+fi
+
+if [ -z "$MYSQL_DATABASE" ]; then
+    echo "ERROR | MySQL database was not given."
+    echo "ERROR | Exiting..."
+    exit 1
+fi
+
+envsubst < templates/_localdatabase.xml templates/localdatabase.xml
+ln -s templates/localdatabase.xml localdatabase.xml
 
 exec "$@"
