@@ -97,4 +97,12 @@ fi
 envsubst < templates/_localdatabase.xml templates/localdatabase.xml
 ln -s templates/localdatabase.xml localdatabase.xml
 
+# creating plugin configuration files
+
+if [ -d "config" ]; then
+    if [ "$(ls -A config/)" ]; then
+        ln -sf config/* .
+    fi
+fi
+
 exec "$@"
