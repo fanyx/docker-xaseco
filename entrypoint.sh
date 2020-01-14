@@ -1,21 +1,5 @@
 #!/bin/sh
 
-# XMLGen
-header='<?xml version="1.0" encoding="utf-8" ?>
-<aseco_plugins>'
-footer='</aseco_plugins>'
-
-fmt='   <plugin>%s</plugin>\n'
-
-{
-printf "%s\n" "$header"
-find plugins -maxdepth 1 -type f | sed -e 's#plugins/##g' | while read line
-do
-    printf "$fmt" "$line"
-done
-printf "%s\n" "$footer"
-} > plugins.xml
-
 # ENV validation
 # config.xml
 
@@ -100,9 +84,36 @@ ln -s templates/localdatabase.xml localdatabase.xml
 # creating plugin configuration files
 
 if [ -d "config" ]; then
-    if [ "$(ls -A config/)" ]; then
-        ln -sf config/* .
-    fi
+        if [ ! -z "$(ls -A config/)" ]
+        then
+            ln -sf config/* .
+        fi
 fi
+
+# generate plugins.xml
+
+header='<?xml version="1.0" encoding="utf-8" ?>
+<aseco_plugins>'
+footer='</aseco_plugins>'
+
+{
+printf "%s\n" "$header"
+grep -oP '(?<=<plugin>).*(?=<\/plugin>)' templates/_plugins.xml | while read default
+do
+    if [ $(find plugins/ -maxdepth 1 -type f | sed 's#plugins\/##g' | grep -q "$default" -; echo $?) -eq 0 ]
+    then
+        printf "     <plugin>%s</plugin>\n" "$default"
+    fi
+done
+
+find plugins/ -maxdepth 1 -type f | sed 's#plugins\/##g' | while read file
+do
+    if [ $(grep -oP '(?<=<plugin>).*(?=<\/plugin>)' templates/_plugins.xml | grep -q "$file" -; echo $?) -eq 1 ]
+    then
+        printf "     <plugin>%s</plugin>\n" "$file"
+    fi
+done
+printf "%s\n" "$footer"
+} > plugins.xml
 
 exec "$@"
