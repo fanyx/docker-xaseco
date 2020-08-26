@@ -16,8 +16,8 @@ fi
 
 if [ -z "$TMSERVER_HOST" ]; then
     echo "WARN | Host address of the trackmania server was not given."
-    echo "WARN | Assuming localhost..."
-    export TMSERVER_HOST="localhost"
+    echo "WARN | Assuming 'trackmania'..."
+    export TMSERVER_HOST="trackmania"
 fi
 
 if [ -z "$TMSERVER_PORT" ]; then
@@ -26,8 +26,7 @@ if [ -z "$TMSERVER_PORT" ]; then
     export TMSERVER_PORT="5000"
 fi
 
-envsubst < templates/_config.xml > templates/config.xml
-ln -s templates/config.xml config.xml
+envsubst < templates/_config.xml > config.xml
 
 # dedimania.xml
 
@@ -49,15 +48,14 @@ if [ -z "$SERVER_NATION" ]; then
     export SERVER_NATION="GER"
 fi
 
-envsubst < templates/_dedimania.xml > templates/dedimania.xml
-ln -s templates/dedimania.xml dedimania.xml
+envsubst < templates/_dedimania.xml > dedimania.xml
 
 # localdatabase.xml
 
 if [ -z "$MYSQL_HOST" ]; then
     echo "WARN | MySQL host address was not given."
-    echo "WARN | Assuming localhost..."
-    export MYSQL_HOST="127.0.0.1"
+    echo "WARN | Assuming 'db'..."
+    export MYSQL_HOST="db"
 fi
 
 if [ -z "$MYSQL_LOGIN" ]; then
@@ -78,17 +76,11 @@ if [ -z "$MYSQL_DATABASE" ]; then
     exit 1
 fi
 
-envsubst < templates/_localdatabase.xml templates/localdatabase.xml
-ln -s templates/localdatabase.xml localdatabase.xml
+envsubst < templates/_localdatabase.xml localdatabase.xml
 
 # creating plugin configuration files
 
-if [ -d "config" ]; then
-        if [ ! -z "$(ls -A config/)" ]
-        then
-            ln -sf config/* .
-        fi
-fi
+[ -d "config" ] && [ ! -z "$(ls -A config/)" ] && ln -sf config/* .
 
 # generate plugins.xml
 
