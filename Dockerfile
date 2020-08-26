@@ -5,6 +5,8 @@ RUN apk add --no-cache gettext
 RUN docker-php-ext-install mysql
 
 COPY xaseco /app
+COPY entrypoint.sh /app/
+COPY scripts/* /app/
 
 WORKDIR /app
 
