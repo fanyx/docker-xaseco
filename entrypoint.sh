@@ -2,7 +2,7 @@
 
 # parse plugin and core configuration files
 
-scripts/config.sh
+bash -c "./config.sh"
 
 # validate ENV vars
 # config.xml - if no custom file is present
@@ -64,6 +64,6 @@ fi
 
 # generate plugins.xml
 
-scripts/plugins.sh
+bash -c "./plugins.sh"
 
 exec "$@"
