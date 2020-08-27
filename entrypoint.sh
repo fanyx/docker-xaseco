@@ -36,30 +36,30 @@ fi
 # localdatabase.xml - if no custom file is present
 if [ ! -f localdatabase.xml ]; then
     if [ -z "$MYSQL_HOST" ]; then
-        echo "WARN | MySQL host address was not given."
-        echo "WARN | Assuming 'db'..."
+        echo "WARN || MySQL host address was not given."
+        echo "WARN || Assuming 'db'..."
         export MYSQL_HOST="db"
     fi
 
     if [ -z "$MYSQL_LOGIN" ]; then
-        echo "ERROR | MySQL login was not given."
-        echo "ERROR | Exiting..."
+        echo "ERROR || MySQL login was not given."
+        echo "ERROR || Exiting..."
         exit 1
     fi
 
     if [ -z "$MYSQL_PASSWORD" ]; then
-        echo "ERROR | MySQL password was not given."
-        echo "ERROR | Exiting..."
+        echo "ERROR || MySQL password was not given."
+        echo "ERROR || Exiting..."
         exit 1
     fi
 
     if [ -z "$MYSQL_DATABASE" ]; then
-        echo "ERROR | MySQL database was not given."
-        echo "ERROR | Exiting..."
+        echo "ERROR || MySQL database was not given."
+        echo "ERROR || Exiting..."
         exit 1
     fi
 
-    envsubst < templates/_localdatabase.xml localdatabase.xml
+    envsubst < templates/_localdatabase.xml > localdatabase.xml
 fi
 
 # generate plugins.xml
