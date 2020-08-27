@@ -11,7 +11,13 @@
 declare -rax CORE_CONFIG_FILES=($(ls -d _config/*))
 
 # link core conf files | suspectible for overwrite by custom conf files
-ln -f _config/* .
+for core in "${CORE_CONFIG_FILES[@]}"
+do
+    ln -s $core .
+done
 
 # link custom conf files | overwrite core files
-ln -sf config/* .
+for custom in "${CUSTOM_CONFIG_FILES[@]}"
+do
+    ln -sf $custom .
+done
