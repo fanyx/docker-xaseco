@@ -10,6 +10,6 @@ COPY scripts/* /app/
 
 WORKDIR /app
 
-ENTRYPOINT ./entrypoint.sh
+ENTRYPOINT ["./entrypoint.sh"]
 
 CMD ["php", "aseco.php"] 
