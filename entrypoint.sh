@@ -8,25 +8,25 @@ bash -c "./config.sh"
 # config.xml - if no custom file is present
 if [ ! -f config.xml ]; then 
     if [ -z "$MASTERADMIN_LOGIN" ]; then
-        echo "WARN | No masteradmin login was specified. It is advised to have the system administrator also function as masteradmin."
-        echo "WARN | continuing..."
+        echo "WARN || No masteradmin login was specified. It is advised to have the system administrator also function as masteradmin."
+        echo "WARN || Continuing..."
     fi
 
     if [ -z "$SUPERADMIN_PASSWORD" ]; then
-        echo "ERROR | No superadmin password was given."
-        echo "ERROR | exiting..."
+        echo "ERROR || No superadmin password was given."
+        echo "ERROR || Exiting..."
         exit 1
     fi
 
     if [ -z "$TMSERVER_HOST" ]; then
-        echo "WARN | Host address of the trackmania server was not given."
-        echo "WARN | Assuming 'trackmania'..."
+        echo "WARN || Host address of the trackmania server was not given."
+        echo "WARN || Assuming 'trackmania'..."
         export TMSERVER_HOST="trackmania"
     fi
 
     if [ -z "$TMSERVER_PORT" ]; then
-        echo "WARN | Port for the connection to trackmania server was not given."
-        echo "WARN | Assuming 5000..."
+        echo "WARN || Port for the connection to trackmania server was not given."
+        echo "WARN || Assuming 5000..."
         export TMSERVER_PORT="5000"
     fi
 
