@@ -38,7 +38,7 @@ require_once('includes/GbxRemote.inc.php');  // needed for dedicated server conn
 require_once('includes/xmlparser.inc.php');  // provides an XML parser
 require_once('includes/gbxdatafetcher.inc.php');  // provides access to GBX data
 require_once('includes/tmndatafetcher.inc.php');  // provides access to TMN world stats
-require_once('includes/rasp.settings.php');  // specific to the RASP plugins
+require_once('rasp.settings.php');  // specific to the RASP plugins
 
 /**
  * Runtime configuration definitions
