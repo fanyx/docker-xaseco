@@ -10,6 +10,9 @@
 # declare core conf array
 declare -rax CORE_CONFIG_FILES=($(ls -d _config/*))
 
+# unlink previous config files and reload
+find -type l -exec rm {} \;
+
 # link core conf files | suspectible for overwrite by custom conf files
 for core in "${CORE_CONFIG_FILES[@]}"
 do
