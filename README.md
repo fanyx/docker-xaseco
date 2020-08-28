@@ -16,6 +16,8 @@ You can find my dockerized TMNF-Server at [fanyx/docker-tmserver](https://github
 ### docker-compose
 Sample file: `[docker-compose.yml](docker-compose.yml)`
 
+Integrate this with the rest of your compose file if you're composing multiple services.
+
 Read the rest of the documentation to see all configuration possibilities.
 
 ### Environment

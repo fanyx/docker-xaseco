@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+    xaseco:
+        image: fanyx/docker-xaseco
+        restart: unless-stopped
+        # env_file: .env-xaseco
+        environment: 
+            - SUPERADMIN_PASSWORD=
+            - MASTERADMIN_LOGIN=
+            - TMSERVER_HOST=trackmania
+            - TMSERVER_PORT=5000
+            - MYSQL_LOGIN=
+            - MYSQL_PASSWORD=
+            - MYSQL_DATABASE=
+            - MYSQL_HOST=db
+        volumes:
+            - ./config:/app/config
+            - ./plugins:/app/plugins
+        
