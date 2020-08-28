@@ -19,11 +19,14 @@ declare -rax PLUGINS_LIST=($(ls -d plugins/*.php | sed -e 's/\plugins\///g'))
             case "${plugin}" in
                 "plugin.localdatabase.php")
                     ;;
+                "plugin.records_eyepiece.php")
+                    ;;    
                 *)
                     printf "  <plugin>%s</plugin>\n" "${plugin}"
                     ;;
             esac
         done
+        [[ "${PLUGINS_LIST[@]}" =~ "plugin.records_eyepiece.php" ]] && printf "  <plugin>plugin.records_eyepiece.php</plugin>\n"
     }
 
     # finish with footer -- \n interpreted
