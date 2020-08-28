@@ -1,4 +1,4 @@
-# docker-xaseco-v2
+# docker-xaseco
 
 ## Description
 Dockerized version of Xymph's XAseco for Trackmania Nations/United Forever. 
