@@ -6,9 +6,19 @@ Dockerized version of Xymph's XAseco for Trackmania Nations/United Forever.
 The image can be started with default settings and a mandatory MySQL connection, but is extensible with custom config files and dynamic plugin loading.
 
 ## Installation
-This image is available from Docker Hub [fanyx/docker-xaseco](https://hub.docker.com/r/fanyx/docker-xaseco "fanyx/docker-xaseco").
 
-You can find my dockerized TMNF-Server at [fanyx/docker-tmserver](https://github.com/fanyx/docker-tmserver "fanyx/docker-tmserver"). This is the advised method but you should also be able to run on Docker host networking.
+### Pre-built image
+
+`docker pull [fanyx/docker-xaseco](https://hub.docker.com/r/fanyx/docker-xaseco "fanyx/docker-xaseco")`
+
+### Build from repo
+
+`git clone https://github.com/fanyx/docker-xaseco.git`
+`cd docker-xaseco`
+
+Edit the repository to your needs, then
+
+`docker build -t <tag> .`
 
 ## Usage
 `docker run -e {required environment variables} fanyx/docker-xaseco:[tag]`
@@ -19,6 +29,8 @@ Sample file: [`docker-compose.yml`](./docker-compose.yml)
 Integrate this with the rest of your compose file if you're composing multiple services.
 
 Read the rest of the documentation to see all configuration possibilities.
+
+You can find my dockerized TMNF-Server at [fanyx/docker-tmserver](https://github.com/fanyx/docker-tmserver "fanyx/docker-tmserver"). This is the advised method but you should also be able to run on Docker host networking.
 
 ### Environment
 #### Trackmania Server
