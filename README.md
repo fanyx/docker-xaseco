@@ -9,11 +9,12 @@ The image can be started with default settings and a mandatory MySQL connection,
 
 ### Pre-built image
 
-`docker pull [fanyx/docker-xaseco](https://hub.docker.com/r/fanyx/docker-xaseco "fanyx/docker-xaseco")`
+`docker pull`[`fanyx/docker-xaseco`](https://hub.docker.com/r/fanyx/docker-xaseco "fanyx/docker-xaseco")
 
 ### Build from repo
 
 `git clone https://github.com/fanyx/docker-xaseco.git`
+
 `cd docker-xaseco`
 
 Edit the repository to your needs, then
